@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "12"
+services:
+  - docker
+
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t hufi818/tpl:latest .
+  - docker push hufi818/tpl:latest
